@@ -24,10 +24,10 @@ app.use(cors(options)) // Esta configuración es para que acepte cualquier orige
 app.use(express.json())
 
 //definir una ruta
-app.get('/', (req, res)=>{
+app.get('/api/', (req, res)=>{
   res.send('Hola mundo cruel ')
 });
-app.get('/route2', (req, res)=>{
+app.get('/api/route2', (req, res)=>{
   res.send('Hola mundo cruel 2.0')
 });
 
