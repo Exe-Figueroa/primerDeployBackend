@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+
 const routerApi = require('./routes');
 const faker = require('faker');
 
@@ -7,6 +9,18 @@ const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/error
 const app = express();
 const port = 3000;
 
+const whiteList = ['http://localhost:5500', 'http://myapp.com', 'http://127.0.0.1:5500']; //En esta lista están los orígenes de los que pueden realizar peticiones a mi API
+const options = {
+  origin: (origin, callback)=>{
+    if (whiteList.includes(origin)) {
+      callback(null, true);
+    }else{
+      callback(new Error('no permitido'));
+    }
+  }
+}
+
+app.use(cors(options)) // Esta configuración es para que acepte cualquier origen y no salten problemas de cors
 app.use(express.json())
 
 //definir una ruta

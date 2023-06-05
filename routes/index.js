@@ -1,5 +1,6 @@
 const express = require('express');
 
+
 const productRouter = require('./productsRouter')
 const categoriesRouter = require('./categoriesRouter')
 const usersRouter = require('./usersRouter')

@@ -31,7 +31,7 @@ class ProductsServices {
     return new Promise((res,rej)=>{
       setTimeout(()=>{
         res(this.products)
-      },3000)
+      },3000) 
     })
   }
   async findOne(id) {
