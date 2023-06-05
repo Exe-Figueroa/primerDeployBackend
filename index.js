@@ -7,12 +7,12 @@ const faker = require('faker');
 const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/errorhandler.js')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const whiteList = ['http://localhost:5500', 'http://myapp.com', 'http://127.0.0.1:5500']; //En esta lista están los orígenes de los que pueden realizar peticiones a mi API
 const options = {
   origin: (origin, callback)=>{
-    if (whiteList.includes(origin)) {
+    if (whiteList.includes(origin) || !origin) {
       callback(null, true);
     }else{
       callback(new Error('no permitido'));
